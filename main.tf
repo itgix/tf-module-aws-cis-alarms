@@ -88,7 +88,7 @@ locals {
 
   default_alarm_actions = length(var.alarm_actions) > 0 ? var.alarm_actions : [aws_sns_topic.this.arn]
 
-  prefix   = var.use_random_name_prefix ? "${random_pet.this[0].id}-" : var.name_prefix
+  prefix   = var.name_prefix
   controls = { for k, v in local.all_controls : k => merge(v, try(var.control_overrides[k], {})) if var.create && !contains(var.disabled_controls, k) }
 }
 
@@ -104,12 +104,6 @@ resource "aws_sns_topic_subscription" "email" {
   topic_arn = aws_sns_topic.this.arn
   protocol  = "email"
   endpoint  = each.value
-}
-
-resource "random_pet" "this" {
-  count = var.use_random_name_prefix ? 1 : 0
-
-  length = 2
 }
 
 resource "aws_cloudwatch_log_metric_filter" "this" {

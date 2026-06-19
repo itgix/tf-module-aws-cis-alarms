@@ -12,15 +12,13 @@ Part of the [ITGix AWS Landing Zone](https://itgix.com/itgix-landing-zone/).
 - CloudWatch Metric Alarms for each enabled control
 - SNS topic for alarm notifications
 - SNS email subscriptions from the provided recipient list
-- Optional random name prefix resource
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|----------|
 | `create` | Whether to create CloudWatch log metric filters and metric alarms | `bool` | `true` | no |
-| `use_random_name_prefix` | Whether to prefix resource names with a random prefix | `bool` | `false` | no |
-| `name_prefix` | Name prefix for alarms and SNS topic (ignored when random prefix is enabled) | `string` | `""` | no |
+| `name_prefix` | Name prefix for alarms and SNS topic | `string` | `""` | no |
 | `control_overrides` | Map of per-control overrides (for thresholds, periods, actions, etc.) | `any` | `{}` | no |
 | `disabled_controls` | List of control IDs to disable | `list(string)` | `[]` | no |
 | `namespace` | CloudWatch metric namespace for generated metrics and alarms | `string` | `"CISBenchmark"` | no |

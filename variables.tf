@@ -4,14 +4,8 @@ variable "create" {
   default     = true
 }
 
-variable "use_random_name_prefix" {
-  description = "Whether to prefix resource names with random prefix"
-  type        = bool
-  default     = false
-}
-
 variable "name_prefix" {
-  description = "A name prefix for the cloudwatch alarm (if use_random_name_prefix is true, this will be ignored)"
+  description = "A name prefix for the CloudWatch alarms and SNS topic"
   type        = string
   default     = ""
 }
